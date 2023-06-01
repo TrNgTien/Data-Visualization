@@ -1,31 +1,49 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import './Content.css';
-import BarChart from './barchart/BarChart';
-import LineChart from './linechart/LineChart';
-import GeoChart from './geochart/GeoChart';
+import { ScatterPlotChart } from './ScatterPlotChart';
+import { BarChart } from './barchart/BarChart';
+import { GeoChart } from './geochart/GeoChart';
 
-const Content = () => {
+//----------------------------Rendering------------------------------------------------------
+export const Content = () => {
   const [type, setType] = useState('barChart')
-  return (
 
+  //--------------------------------------------------------------------
+  const changeChart = useCallback((type) => {
+    setType(type)
+  }, [type])
+
+  //--------------------------------------------------------------------
+  const RenderChart = useCallback(() => {
+    switch (type) {
+      case 'scatterChart': {
+        return <ScatterPlotChart />
+      }
+      case 'geoChart': {
+        return <GeoChart />
+      }
+      default: {
+        return <BarChart />
+      }
+    }
+  }, [type])
+
+  return (
     <div className="content">
-      <div className='chart-title'><h1>Project Data Science and Visualization</h1></div>
+      <div className='chart-title'>
+        <h1>Project Data Science and Visualization</h1>
+      </div>
       <div style={{ display: 'flex', marginTop: '2rem' }}>
         <div className='button-container'>
-          <button onClick={() => setType('barChart')}>BAR CHART</button>
-          <button onClick={() => setType('lineChart')}>LINE CHART</button>
-          <button onClick={() => setType('geoChart')}>GEO CHART</button>
-          <button onClick={() => setType('test3')}>TEST</button>
+          <button style={{ cursor: 'pointer' }} onClick={() => changeChart('barChart')}>BAR CHART</button>
+          <button style={{ cursor: 'pointer' }} onClick={() => changeChart('scatterChart')}>SCATTER PLOT CHART</button>
+          <button style={{ cursor: 'pointer' }} onClick={() => changeChart('geoChart')}>GEO CHART</button>
         </div>
         <div className='interactive-view'>
-
-          {type === 'barChart' && <BarChart type={type} />}
-          {type === 'lineChart' && <LineChart type={type} />}
-          {type === 'geoChart' && <GeoChart type={type} />}
+          <RenderChart />
         </div>
       </div>
     </div>
   );
 };
 
-export default Content;
