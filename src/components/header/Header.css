@@ -1,0 +1,38 @@
+.header {
+  background-color: #279cd38f;
+  text-align: center;
+  padding: 6px;
+  min-height: 6vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.header h1 {
+  margin: 0;
+  color: #fff;
+}
+
+.nav-links {
+  width: 100vw;
+  height: 6vh;
+  list-style-type: none;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 4rem;
+  padding-right: 4rem;
+}
+
+.nav-links li {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.nav-links a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.nav-links a:hover {
+  text-decoration: underline;
+}

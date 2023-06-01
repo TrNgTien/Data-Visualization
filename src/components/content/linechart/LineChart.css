@@ -1,0 +1,16 @@
+.x-axis {
+  font-size: 0.6rem;
+  color: black;
+  stroke-width: 1;
+  font-size: 24;
+  font-family: sans-serif;
+  text-anchor: middle;
+}
+
+.y-axis {
+  font-size: 0.6rem;
+  color: black;
+  stroke-width: 1;
+  font-size: 24;
+  font-family: sans-serif;
+}
